@@ -1,10 +1,7 @@
 # Win10风格的Loading动画
 
-<<<<<<< HEAD
-这是一个Win10风格的加载动画View，思路来自[这篇 Blog](https://blog.csdn.net/a10615/article/details/52745963) 经过学习之后，加以运用实现了类似Windows Phone经典的加载动画。如下图：
-=======
+
 这是一个Win10风格的加载动画view，思路来自[这篇 Blog](https://blog.csdn.net/a10615/article/details/52745963) 经过学习之后，加以运用实现了类似Windows Phone经典的加载动画。
->>>>>>> e8b4fc24b098372b8115547b2678e109d0da3c0e
 
 ![pic](ScreenShot/1.gif)
 
@@ -15,13 +12,13 @@
 
 ![pic2](ScreenShot/2.png)
 
-如图形状的贝塞尔曲线可以描述小方块的运动状态变化，可以在[这个网站](http://cubic-bezier.com/#.28,.77,.67,.23)上自定形状然后查看效果。
+如图形状的贝塞尔曲线可以描述小方块的运动状态变化，可以在[这个网站](http://cubic-bezier.com/#.28,.77,.67,.23)上自定形状然后查看效果。
 这里采用自定义时间插值器`TimeInterpolator`，时间的变化范围是从0～1，小方块的运动范围是从屏幕左侧到右侧。图像如下：
 
 ![pic3](ScreenShot/3.png)
 
 接下来可以根据图像，估计每个阶段的坐标点，这些点需要一点一点去调试才知道合不合理。
-对于这种图形，可以拆分成两个不完整的二阶贝塞尔曲线分别计算。这是可以利用中间匀速运动的线段来求出加速部分贝塞尔曲线的控制点，由于匀速运动的线段是直线所以可以找到两个点形成的直线近似的描述这条线段，这条直线与另外两条竖线的交点就是贝塞尔曲线的控制点。
+对于这种图形，可以拆分成两个不完整的二阶贝塞尔曲线分别计算。这是可以利用中间匀速运动的线段来求出加速部分贝塞尔曲线的控制点，由于匀速运动的线段是直线所以可以找到两个点形成的直线近似的描述这条线段，这条直线与另外两条竖线的交点就是贝塞尔曲线的控制点。
 两个点求直线公式为：$$\frac{y-y_1}{y_2-y_1}=\frac{x-x_1}{x_2-x_1}$$
 
 ```java
@@ -32,15 +29,15 @@ private float calculateLineY(double x1, double y1, double x2, double y2, double 
         return (float) ((x - x1) * (y2 - y1) / (x2 - x1) + y1);
     }
 ```
-由于我们需要求坐标y的值，因此上述代码将公式变形了。
+由于我们需要求坐标y的值，因此上述代码将公式变形了。
 
 ![pic4](ScreenShot/4.png)
 
 求出两个贝塞尔曲线的控制点之后，就可以利用二阶贝塞尔曲线的公式计算在某一时刻点的坐标了
 ![pic5](ScreenShot/5.gif)
 二阶贝塞尔曲线公式为：$$B(t)=(1-t)^2P_0+2t(1-t)P_1+t^2P_2 , t \in [0,1] $$
-其中，$P_0$为起点、$P_1$为控制点$、P_2$为终点。
-在android中绘制贝塞尔曲线的时候可以只将起点、终点、控制点的横坐标(纵坐标)带入，得到的结果即为某一时刻点的横坐标(纵坐标)。
+其中，$P_0$为起点、$P_1$为控制点$、P_2$为终点。
+在android中绘制贝塞尔曲线的时候可以只将起点、终点、控制点的横坐标(纵坐标)带入，得到的结果即为某一时刻点的横坐标(纵坐标)。
 
 ```java
 private float calculateBezierQuadratic(double p0, double p1, double p2, @FloatRange(from = 0, to = 1) double t) {
@@ -55,7 +52,7 @@ final float offset = (float) (index * (100 - 85) * minTimePercentage / (mDotView
 ```
 `minTimePercentage`其实就是1/100。
 
-有了上面这些准备之后，我们开始构造坐标点。
+有了上面这些准备之后，我们开始构造坐标点。
 ```java
 final double[] mInterpolatorY = new double[]{
                 0,
@@ -72,8 +69,8 @@ final double[] mInterpolatorX = new double[]{
                 58 * minTimePercentage + offset,
         };
 ```
-上面这些坐标只是一调一调出来的。用两个数组存放，一个表示时间插值器坐标系中的Y值`mInterpolatorY`,一个表示时间插值器坐标系中的X值`mInterpolatorX`。修改`mInterpolatorX`的数据可以控制小方块在每个阶段的速度，修改`mInterpolatorY`的数据可以控制小方块在每个阶段的位置。我是懒得再调了。
-
+上面这些坐标只是一调一调出来的。用两个数组存放，一个表示时间插值器坐标系中的Y值`mInterpolatorY`,一个表示时间插值器坐标系中的X值`mInterpolatorX`。修改`mInterpolatorX`的数据可以控制小方块在每个阶段的速度，修改`mInterpolatorY`的数据可以控制小方块在每个阶段的位置。我是懒得再调了。
+
 然后是在自定义时间插值器中判断各个动画的阶段，让小方块按照之前设定好的运动：
 ```java
 mAnimator.setInterpolator(new TimeInterpolator() {
@@ -120,9 +117,9 @@ private float calculateNewPercent(double oldStart, double oldEnd, double newStar
 ```
 
 
-上面代码中，input的取值范围是从0～1，这个参数走到1说明动画结束了。我们拿mInterpolatorX和input比较判定是动画的哪一个阶段，然后根据情况设定小方块的Visibility。
+上面代码中，input的取值范围是从0～1，这个参数走到1说明动画结束了。我们拿mInterpolatorX和input比较判定是动画的哪一个阶段，然后根据情况设定小方块的Visibility。
 正常情况下，动画在执行时间duration内，从起点到终点，中间是匀速运动，每一时刻都对应着固定的位置。为了统一，把时间 0～duration 转换成时间百分比 0～1 。
-在每个阶段都 return当前时刻在贝塞尔曲线上的坐标值，这样就控制了小方块运动。
+在每个阶段都 return当前时刻在贝塞尔曲线上的坐标值，这样就控制了小方块运动。
 
 #### 合适loading展示位置
 <center class="half">
