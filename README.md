@@ -1,6 +1,10 @@
 # Win10风格的Loading动画
 
+<<<<<<< HEAD
 这是一个Win10风格的加载动画View，思路来自[这篇 Blog](https://blog.csdn.net/a10615/article/details/52745963) 经过学习之后，加以运用实现了类似Windows Phone经典的加载动画。如下图：
+=======
+这是一个Win10风格的加载动画view，思路来自[这篇 Blog](https://blog.csdn.net/a10615/article/details/52745963) 经过学习之后，加以运用实现了类似Windows Phone经典的加载动画。
+>>>>>>> e8b4fc24b098372b8115547b2678e109d0da3c0e
 
 ![pic](ScreenShot/1.gif)
 
