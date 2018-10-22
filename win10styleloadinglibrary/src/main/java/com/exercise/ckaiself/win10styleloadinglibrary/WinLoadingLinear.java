@@ -124,24 +124,24 @@ public class WinLoadingLinear extends RelativeLayout {
      */
     private Animator createViewAnim(final View view, final int index) {
         //animation duration
-        long duration = 5000;
+        long duration = 3500;
         //Minimum execution unit time as a percentage of total time
         double minTimePercentage = duration / 100f / duration;
         //dot offset
-        final float offset = (float) (index * (100 - 88) * minTimePercentage / (mDotViews.length - 1));
+        final float offset = (float) (index * (100 - 85) * minTimePercentage / (mDotViews.length - 1));
         //Y-axis coordinate in Interpolator
         final double[] mInterpolatorY = new double[]{
                 0,
-                33 / 100d,
-                58 / 100d,
+                32 / 100d,
+                55 / 100d,
                 1
         };
         //X-axis coordinate in Interpolator
         final double[] mInterpolatorX = new double[]{
                 0 + offset,
-                8 * minTimePercentage + offset,
-                30 * minTimePercentage + offset,
-                38 * minTimePercentage + offset,
+                12 * minTimePercentage + offset,
+                46 * minTimePercentage + offset,
+                58 * minTimePercentage + offset,
         };
 
         //control point of Bezier (dots accelerate to come in)

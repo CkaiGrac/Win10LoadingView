@@ -17,8 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WinLoadingCircleActivity" />
-        <activity android:name=".WinLoadingCircle2Activity" />
-        <activity android:name=".WinLoadingLinearActivity"></activity>
+        <activity android:name=".WinLoadingLinearActivity" />
     </application>
 
 </manifest>

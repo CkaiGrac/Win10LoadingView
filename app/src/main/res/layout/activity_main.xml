@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+
     <Button
         android:id="@+id/toWinLoading_1"
         android:layout_width="match_parent"
@@ -22,8 +24,8 @@
         android:text="win10loading——2" />
 
     <Button
-        android:id="@+id/toWinLoading_3"
+        android:id="@+id/btshow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="win10loading——3" />
+        android:text="show" />
 </LinearLayout>

@@ -9,8 +9,8 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
+    private Button mBtToWinLoading_1;
     private Button mBtToWinLoading_2;
-    private Button mBtToWinLoading_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,20 +22,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
 
+        mBtToWinLoading_1 = findViewById(R.id.toWinLoading_1);
         mBtToWinLoading_2 = findViewById(R.id.toWinLoading_2);
-        mBtToWinLoading_3 = findViewById(R.id.toWinLoading_3);
 
+
+        mBtToWinLoading_1.setOnClickListener(this);
         mBtToWinLoading_2.setOnClickListener(this);
-        mBtToWinLoading_3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.toWinLoading_2:
-                startActivity(new Intent(MainActivity.this, WinLoadingCircle2Activity.class));
+            case R.id.toWinLoading_1:
+                startActivity(new Intent(MainActivity.this, WinLoadingCircleActivity.class));
                 break;
-            case R.id.toWinLoading_3:
+            case R.id.toWinLoading_2:
                 startActivity(new Intent(MainActivity.this, WinLoadingLinearActivity.class));
                 break;
         }
