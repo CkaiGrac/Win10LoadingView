@@ -58,7 +58,9 @@ private WinLoadingLinear loading;
 如图形状的贝塞尔曲线可以描述小方块的运动状态变化，可以在[这个网站](http://cubic-bezier.com/#.28,.77,.67,.23)上自定形状然后查看效果。
 这里采用自定义时间插值器`TimeInterpolator`，时间的变化范围是从0～1，小方块的运动范围是从屏幕左侧到右侧。图像如下：
 
-![pic3](ScreenShot/3.png)
+<center class="half">
+    <img src="ScreenShot/3.png" width="400"/>
+</center>
 
 接下来可以根据图像，估计每个阶段的坐标点，这些点需要一点一点去调试才知道合不合理。
 对于这种图形，可以拆分成两个不完整的二阶贝塞尔曲线分别计算。这是可以利用中间匀速运动的线段来求出加速部分贝塞尔曲线的控制点，由于匀速运动的线段是直线所以可以找到两个点形成的直线近似的描述这条线段，这条直线与另外两条竖线的交点就是贝塞尔曲线的控制点。
@@ -76,7 +78,9 @@ private float calculateLineY(double x1, double y1, double x2, double y2, double 
 ```
 由于我们需要求坐标y的值，因此上述代码将公式变形了。
 
-![pic4](ScreenShot/4.png)
+<center class="half">
+    <img src="ScreenShot/4.png" width="400"/>
+</center>
 
 求出两个贝塞尔曲线的控制点之后，就可以利用二阶贝塞尔曲线的公式计算在某一时刻点的坐标了
 
