@@ -22,8 +22,12 @@
 
 接下来可以根据图像，估计每个阶段的坐标点，这些点需要一点一点去调试才知道合不合理。
 对于这种图形，可以拆分成两个不完整的二阶贝塞尔曲线分别计算。这是可以利用中间匀速运动的线段来求出加速部分贝塞尔曲线的控制点，由于匀速运动的线段是直线所以可以找到两个点形成的直线近似的描述这条线段，这条直线与另外两条竖线的交点就是贝塞尔曲线的控制点。
+<<<<<<< HEAD
 
 两个点求直线公式为： ![pic8](ScreenShot/8.png)
+=======
+两个点求直线公式为：$$\frac{y-y_1}{y_2-y_1}=\frac{x-x_1}{x_2-x_1}$$
+>>>>>>> 09939282d2aeaec58dbf5811825d72ca9d78833f
 
 ```java
 private float calculateLineY(double x1, double y1, double x2, double y2, double x) {
@@ -40,12 +44,17 @@ private float calculateLineY(double x1, double y1, double x2, double y2, double 
 求出两个贝塞尔曲线的控制点之后，就可以利用二阶贝塞尔曲线的公式计算在某一时刻点的坐标了
 
 ![pic5](ScreenShot/5.gif)
+<<<<<<< HEAD
 
 二阶贝塞尔曲线公式为：
 
 ![pic4](ScreenShot/7.png)
 
 其中，P0为起点、P1为控制点、P2为终点。
+=======
+二阶贝塞尔曲线公式为：$$B(t)=(1-t)^2P_0+2t(1-t)P_1+t^2P_2 , t \in [0,1] $$
+其中，$P_0$为起点、$P_1$为控制点$、P_2$为终点。
+>>>>>>> 09939282d2aeaec58dbf5811825d72ca9d78833f
 在android中绘制贝塞尔曲线的时候可以只将起点、终点、控制点的横坐标(纵坐标)带入，得到的结果即为某一时刻点的横坐标(纵坐标)。
 
 ```java
@@ -132,5 +141,10 @@ private float calculateNewPercent(double oldStart, double oldEnd, double newStar
 
 ### 合适loading展示位置
 <center class="half">
+<<<<<<< HEAD
     <img src="ScreenShot/6.png" width="250"/> <img src="ScreenShot/5.png" width="250"/>
+=======
+    <img src="ScreenShot/6.png" width="250"/>
+    <img src="ScreenShot/5.png" width="250"/>
+>>>>>>> 09939282d2aeaec58dbf5811825d72ca9d78833f
 </center>
