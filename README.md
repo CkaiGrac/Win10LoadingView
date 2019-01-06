@@ -178,6 +178,7 @@ private float calculateNewPercent(double oldStart, double oldEnd, double newStar
 
 ### 合适loading展示位置
 
-<center class="half">
-    <img src="ScreenShot/6.png" width="250"/> <img src="ScreenShot/5.png" width="250"/>
-</center>
+<div align="center">
+<img src="/ScreenShot/6.png"  height="400" width="200">
+<img src="/ScreenShot/5.png"  height="400" width="200">
+</div>
